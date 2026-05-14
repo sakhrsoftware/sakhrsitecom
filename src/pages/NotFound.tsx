@@ -6,6 +6,50 @@ const NotFound = () => {
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+
+    const prevTitle = document.title;
+    document.title = "Page Not Found (404) — Sakhr Software";
+
+    const setMeta = (selector: string, attr: string, name: string, content: string) => {
+      let el = document.head.querySelector<HTMLMetaElement>(selector);
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
+      }
+      const prev = el.getAttribute("content");
+      el.setAttribute("content", content);
+      return () => {
+        if (prev === null) el?.remove();
+        else el?.setAttribute("content", prev);
+      };
+    };
+
+    const restorers = [
+      setMeta(
+        'meta[name="description"]',
+        "name",
+        "description",
+        "The page you are looking for could not be found. Return to the Sakhr Software homepage."
+      ),
+      setMeta(
+        'meta[property="og:title"]',
+        "property",
+        "og:title",
+        "Page Not Found — Sakhr Software"
+      ),
+      setMeta(
+        'meta[property="og:description"]',
+        "property",
+        "og:description",
+        "The page you are looking for could not be found."
+      ),
+    ];
+
+    return () => {
+      document.title = prevTitle;
+      restorers.forEach((r) => r());
+    };
   }, [location.pathname]);
 
   return (

@@ -1,0 +1,9 @@
+# Sakhr Software
+
+> Pioneer in advanced Arabic language technology and Natural Language Processing (NLP) solutions, with 28+ years of R&D serving governments and enterprises worldwide.
+
+Sakhr Software develops Arabic NLP technologies including Machine Translation, Optical Character Recognition (OCR), Text-to-Speech (TTS), Speech Recognition, search, and morphological analysis. Flagship products include Sahehly and ArabDox.
+
+## Pages
+
+- [Home](/): Overview of Sakhr Software, products, clients, partners, and contact information.
